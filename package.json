@@ -1,0 +1,37 @@
+{
+  "name": "trustspot",
+  "version": "1.0.2",
+  "description": "JavaScript client library for trustspot.io API",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koresar/trustspot.git"
+  },
+  "keywords": [
+    "trustspot",
+    "API"
+  ],
+  "author": "kroesar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/koresar/trustspot/issues"
+  },
+  "homepage": "https://github.com/koresar/trustspot#readme",
+  "devDependencies": {
+    "jest": "^21.2.1"
+  },
+  "dependencies": {
+    "@stamp/arg-over-prop": "^1.0.1",
+    "node-fetch": "^1.7.3"
+  },
+  "npmFileMap": [
+    {
+      "files": [
+        "/index.js"
+      ]
+    }
+  ]
+}
