@@ -20,7 +20,11 @@ const trustspot = Trustspot({key: MY_KEY});
 
 ## Fetch data
 
-### getCompanyReviews({limit=10, offset=0})
+### getCompanyReviews({limit=10, offset=0, sort='date desc'})
+
+* `limit` - number
+* `offset` - number
+* `sort` - string, one of: `'date desc'`, `'rating desc'`, `'rating asc'`
 
 ```js
 const reviews = await trustspot.getCompanyReviews({offset: 12});

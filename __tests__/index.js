@@ -129,7 +129,7 @@ describe('#getCompanyReviews', () => {
             'Accept': 'application/json, application/xml, text/plain, text/html, *.*',
             'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
           });
-          expect(body).toBe('key=1234&limit=11&offset=12');
+          expect(body).toBe('key=1234&limit=11&offset=12&sort=rating%20asc');
 
           return Promise.resolve({json: () => returnedJson})
         }
@@ -137,7 +137,7 @@ describe('#getCompanyReviews', () => {
     });
 
     return MockedTrustspot({key: '1234'})
-    .getCompanyReviews({limit: 11, offset: 12})
+    .getCompanyReviews({limit: 11, offset: 12, sort: 'rating asc'})
     .then(reviews => {
       expect(reviews).toBe(returnedJson);
     });
