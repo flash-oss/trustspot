@@ -6,9 +6,15 @@ describe('#getCompanyReviews', () => {
   });
 
   it('change default key', () => {
-    const DefaultedTrustspot = Trustspot.compose({properties: {key: '1234'}});
+    const MockedTrustspot = Trustspot
+    .compose({
+      properties: {
+        key: '1234',
+        fetch: () => Promise.resolve({json: () => ({})})
+      }
+    });
 
-    expect(() => DefaultedTrustspot().getCompanyReviews()).not.toThrow();
+    expect(() => MockedTrustspot().getCompanyReviews()).not.toThrow();
   });
 
   it('fetch data', () => {
