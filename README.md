@@ -1,5 +1,7 @@
 # trustspot
-JavaScript client library for trustspot.io API
+Node.js library for trustspot.io API
+
+Works in Node.js 6 and above.
 
 ## Install
 ```bash
@@ -87,4 +89,4 @@ const trustspot = Trustspot(); // No need to pass the key any more!
 
 # Contributing
 
-This is an Open Open Source. Whoever submits a meaningful API gets the write access.
+This is an Open Open Source. Whoever submits a meaningful PR gets the write access.
