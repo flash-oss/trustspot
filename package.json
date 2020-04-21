@@ -1,6 +1,6 @@
 {
   "name": "trustspot",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Node.js library for trustspot.io API",
   "main": "index.js",
   "scripts": {
