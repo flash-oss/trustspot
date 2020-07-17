@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/koresar/trustspot.git"
+    "url": "git+https://github.com/flash-oss/trustspot.git"
   },
   "keywords": [
     "trustspot",
@@ -17,9 +17,9 @@
   "author": "koresar",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/koresar/trustspot/issues"
+    "url": "https://github.com/flash-oss/trustspot/issues"
   },
-  "homepage": "https://github.com/koresar/trustspot#readme",
+  "homepage": "https://github.com/flash-oss/trustspot#readme",
   "devDependencies": {
     "chai": "^4.2.0",
     "mocha": "^7.1.1",
