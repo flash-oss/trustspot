@@ -22,18 +22,14 @@
   "homepage": "https://github.com/flash-oss/trustspot#readme",
   "devDependencies": {
     "chai": "^4.2.0",
-    "mocha": "^7.1.1",
-    "prettier": "^2.0.5"
+    "mocha": "^7.2.0",
+    "prettier": "^2.1.2"
   },
   "dependencies": {
     "@stamp/arg-over-prop": "^1.0.4",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.1"
   },
-  "npmFileMap": [
-    {
-      "files": [
-        "/index.js"
-      ]
-    }
+  "files": [
+    "/index.js"
   ]
 }
