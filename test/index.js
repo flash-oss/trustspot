@@ -1,12 +1,18 @@
-const { expect } = require("chai");
+const { describe, it } = require("node:test");
+const assert = require("assert");
 const Trustspot = require("..");
 
 describe("#getCompanyReviews", () => {
-    it("throws if key is missing", () => {
-        expect(() => Trustspot().getCompanyReviews()).to.throw(/key/);
+    it("throws if key is missing", async () => {
+        try {
+            await Trustspot().getCompanyReviews();
+            assert.fail("should have thrown");
+        } catch (err) {
+            assert(err.message.includes("key"));
+        }
     });
 
-    it("change default key", () => {
+    it("change default key", async () => {
         const MockedTrustspot = Trustspot.compose({
             properties: {
                 key: "1234",
@@ -14,10 +20,10 @@ describe("#getCompanyReviews", () => {
             },
         });
 
-        expect(() => MockedTrustspot().getCompanyReviews()).not.to.throw();
+        await MockedTrustspot().getCompanyReviews();
     });
 
-    it("fetch data", () => {
+    it("fetch data", async () => {
         const returnedJson = {
             error: "",
             company_name: "Acme Inc",
@@ -136,23 +142,25 @@ describe("#getCompanyReviews", () => {
         const MockedTrustspot = Trustspot.compose({
             properties: {
                 fetch(url, { method, headers, body }) {
-                    expect(url).to.equal("https://trustspot.io/api/pub/get_company_reviews");
-                    expect(method).to.equal("POST");
-                    expect(headers).to.deep.equal({
+                    assert.strictEqual(url, "https://trustspot.io/api/pub/get_company_reviews");
+                    assert.strictEqual(method, "POST");
+                    assert.deepStrictEqual(headers, {
                         Accept: "application/json, application/xml, text/plain, text/html, *.*",
                         "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
                     });
-                    expect(body).to.equal("key=1234&limit=11&offset=12&sort=rating%20asc");
+                    assert.strictEqual(body, "limit=11&offset=12&sort=rating+asc&key=1234");
 
                     return Promise.resolve({ json: () => returnedJson });
                 },
             },
         });
 
-        return MockedTrustspot({ key: "1234" })
-            .getCompanyReviews({ limit: 11, offset: 12, sort: "rating asc" })
-            .then((reviews) => {
-                expect(reviews).to.equal(returnedJson);
-            });
+        const reviews = await MockedTrustspot({ key: "1234" }).getCompanyReviews({
+            limit: 11,
+            offset: 12,
+            sort: "rating asc",
+        });
+
+        assert.strictEqual(reviews, returnedJson);
     });
 });

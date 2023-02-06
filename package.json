@@ -4,7 +4,7 @@
   "description": "Node.js library for trustspot.io API",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "node --test"
   },
   "repository": {
     "type": "git",
@@ -21,13 +21,10 @@
   },
   "homepage": "https://github.com/flash-oss/trustspot#readme",
   "devDependencies": {
-    "chai": "^4.2.0",
-    "mocha": "^7.2.0",
     "prettier": "^2.1.2"
   },
   "dependencies": {
-    "@stamp/arg-over-prop": "^1.0.4",
-    "node-fetch": "^2.6.1"
+    "stampit": "^4.3.2"
   },
   "files": [
     "/index.js"

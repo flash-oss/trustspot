@@ -1,39 +1,54 @@
 # trustspot
+
 Node.js library for trustspot.io API
 
-Works in Node.js 6 and above.
+Works in Node.js 8 and above.
 
 ## Install
+
 ```bash
-npm i -S trustspot
+npm i trustspot
 ```
 
 ## Find your API key
 
-Go to your [Account Settings](https://trustspot.io/index.php/merchant/dashboard/settings) and find the key there.
+Go to your [Account Settings](https://trustspot.io/account_settings/general) and find the key there.
 
 ## Create API client instance
 
 ```js
-import Trustspot from 'trustspot';
+import Trustspot from "trustspot";
+// or
+const Trustspot = require("trustspot");
+```
 
-const trustspot = Trustspot({key: MY_KEY});
+In Node.js 18 and above:
+
+```js
+const trustspot = Trustspot({ key: MY_KEY });
+```
+
+In Node.js 16 and below:
+
+```js
+const trustspot = Trustspot({ key: MY_KEY, fetch: require("node-fetch") });
 ```
 
 ## Fetch data
 
 ### getCompanyReviews({limit=10, offset=0, sort='date desc'})
 
-* `limit` - number
-* `offset` - number
-* `sort` - string, one of: `'date desc'`, `'rating desc'`, `'rating asc'`
+- `limit` - number
+- `offset` - number
+- `sort` - string, one of: `'date desc'`, `'rating desc'`, `'rating asc'`
 
 ```js
-const reviews = await trustspot.getCompanyReviews({offset: 12});
+const reviews = await trustspot.getCompanyReviews({ offset: 12 });
 console.log(reviews);
 ```
 
 Will print something like this:
+
 ```js
 {
   error: '',
@@ -72,9 +87,11 @@ Will print something like this:
 If your API is running not on the default domain here is how to use this module against a different URL.
 
 ```js
-const Trustspot = require('trustspot').compose({properties: {baseUrl: 'localhost:8081'}});
+const Trustspot = require("trustspot").props({
+  baseUrl: "localhost:8081",
+});
 
-const trustspot = Trustspot({key: MY_KEY});
+const trustspot = Trustspot({ key: MY_KEY });
 ```
 
 ## Hardcode the key
@@ -82,7 +99,7 @@ const trustspot = Trustspot({key: MY_KEY});
 If you don't want to pass the API key every time you can set the default API key for all object instances.
 
 ```js
-const Trustspot = require('trustspot').compose({properties: {key: MY_KEY}});
+const Trustspot = require("trustspot").props({ key: MY_KEY });
 
 const trustspot = Trustspot(); // No need to pass the key any more!
 ```
