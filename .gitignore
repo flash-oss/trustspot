@@ -59,3 +59,4 @@ typings/
 
 .npmrc
 package-lock.json
+.idea/
